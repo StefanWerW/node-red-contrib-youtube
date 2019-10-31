@@ -11,7 +11,7 @@
     "url": "git+https://github.com/StefanWerW/node-red-contrib-youtube.git"
   },
   "dependencies": {
-    "request": "~2.40.0",
+    "request": "~2.88.0",
     "youtube-api": "^1.4.0",
     "ytdl-core": "0.x",
     "progress-stream": "1.x"
