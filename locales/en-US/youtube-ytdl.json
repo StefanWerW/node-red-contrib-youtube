@@ -1,11 +1,11 @@
 {
-    "youtube-download": {
+    "youtube-ytdl": {
         "label": {
             "name":"Name",
             "youtubeDownload": "Youtube Download",
             "path": "Path",
             "url": "url",
-            "paletteLabel":"download"
+            "paletteLabel":"Youtube Download"
         }
     }
 }
