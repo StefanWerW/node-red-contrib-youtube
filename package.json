@@ -1,26 +1,24 @@
 {
-  "name": "node-red-contrib-youtube",
-  "version": "0.0.10",
-  "description": "Youtube nodes for node-red",
-  "main": "node-red-contrib-youtube-upload.js",
+  "name": "node-red-contrib-ytdl",
+  "version": "0.0.7",
+  "description": "Youtube download based on ytdl and ytpl",
+  "main": "youtube-ytdl.js",
   "scripts": {
     "test": "node ./node_modules/node-red/red.js -v"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/StefanWerW/node-red-contrib-youtube.git"
+    "url": "git+https://github.com/maxill1/node-red-contrib-ytdl.git"
   },
   "dependencies": {
-    "request": "~2.40.0",
-    "youtube-api": "^1.4.0",
-    "ytdl-core": "0.x",
-    "progress-stream": "1.x"
+    "node-id3": "^0.2.2",
+    "path": "^0.12.7",
+    "ytdl-core": "^4.11.0",
+    "ytpl": "^2.0.4"
   },
   "node-red": {
     "nodes": {
-      "google-credentials-youtube": "google-credentials-youtube.js",
-      "youtube-download": "youtube-download.js",
-      "youtube-upload": "youtube-upload.js"
+      "youtube-download": "youtube-ytdl.js"
     }
   },
   "keywords": [
@@ -30,10 +28,10 @@
     "contrib",
     "red"
   ],
-  "author": "scaw.dev",
+  "author": "maxill1",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/StefanWerW/node-red-contrib-youtube/issues"
+    "url": "https://github.com/maxill1/node-red-contrib-ytdl/issues"
   },
-  "homepage": "https://github.com/StefanWerW/node-red-contrib-youtube#readme"
+  "homepage": "https://github.com/maxill1/node-red-contrib-ytdl#readme"
 }

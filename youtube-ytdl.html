@@ -1,0 +1,85 @@
+<script type="text/x-red" data-template-name="youtube-ytdl">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="youtube-ytdl.label.name"></span></label>
+        <input type="text" id="node-input-name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-url"><i class="fa fa-youtube"></i> <span data-i18n="youtube-ytdl.label.url"></span> </label>
+        <input type="text" id="node-input-url" style="width:300px">
+        <input type="hidden" id="node-input-urlType">
+    </div>
+    <div class="form-row">
+        <label for="node-input-path"><i class="fa fa-file-video-o"></i> <span data-i18n="youtube-ytdl.label.path"></span> </label>
+        <input type="text" id="node-input-path" style="width:300px">
+        <input type="hidden" id="node-input-pathType">
+    </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="youtube-ytdl">
+    <p>A node to download videos/audio from Youtube</p>
+
+    <h3>Inputs</h3>
+        <dl class="message-properties">
+            <dt>payload
+                <span class="property-type">string|array</span>
+            </dt>
+            <dd> the youtube video url, a playlist url or an array of url</dd>
+            <dt class="optional"> path <span class="property-type">string</span></dt>
+            <dd> An optional property that represents the absolute path to save the file (/tmp, /home/user/downloads, etc)</dd>
+            <dt class="optional"> audioonly <span class="property-type">string</span></dt>
+            <dd> An optional property that if valorized will download the video as audio only (mp3)</dd>
+        </dl>
+
+        <h3>Outputs</h3>
+            <dl class="message-properties">
+                <dt>payload
+                    <span class="property-type">string</span>
+                </dt>
+                <dd> the youtube video url that have been downloaded</dd>
+                <dt> path <span class="property-type">string</span></dt>
+                <dd> An optional property that represents the absolute path to save the file (/tmp, /home/user/downloads, etc)</dd>
+                <dt class="optional"> audioonly <span class="property-type">string</span></dt>
+                <dd> An optional property that if valorized will download the video as audio only (mp3)</dd>
+                <dt> file <span class="property-type">string</span></dt>
+                <dd> where the file has been saved (path + video title + mp3/mp4)</dd>
+                <dt> title <span class="property-type">string</span></dt>
+                <dd> The youtube video title </dd>
+                <dt class="optional"> playlistTitle <span class="property-type">string</span></dt>
+                <dd> The youtube playlist title (if input is a playlist)</dd>
+
+            </dl>
+
+        <h3>Details</h3>
+            <p>The video url to download and is required and can be provided via <code>msg.payload</code> or node settings.</p>
+            <p>The download folder is required to and can be provided via <code>msg.path</code> or node settings.</p>
+            <p>The output <code>msg</code> is the same as input plus <code>msg.file</code> that represents the full path of the stored file (directory + name + extension) and <code>msg.title</code> that represents the youtube video title </p>
+
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('youtube-ytdl',{
+        category: 'media',
+        color:"#e52d27",
+        icon: "youtube.png",
+        defaults: {
+            name: {value:""},
+            url: {required:false},
+            urlType: {value:"str"},
+            path: {required:false},
+            pathType: {value:"str"}
+        },
+        inputs:1,
+        outputs:1,
+        label: function() {
+            return this.name||this._("youtube-ytdl.label.youtubeDownload");
+        },
+        paletteLabel: function() {
+            return this._("youtube-ytdl.label.paletteLabel")
+        },
+        oneditprepare: function() {
+            $("#node-input-path").typedInput({default:'str', typeField: $("#node-input-pathType"), types: ['msg', 'flow', 'global', 'str']});
+            $("#node-input-url").typedInput({default:'str', typeField: $("#node-input-urlType"), types: ['msg', 'flow', 'global', 'str']});
+        }
+    });
+</script>
